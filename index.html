@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hoarde: Focus Timer</title>
+  <meta name="description" content="Hoarde is a focus timer where you guard a growing treasure hoard. Leave your phone alone and gold piles up. Open another app and a goblin steals it.">
+  <meta property="og:title" content="Hoarde: Focus Timer">
+  <meta property="og:description" content="Leave your phone alone and gold piles up. Open another app and a goblin steals it.">
+  <meta property="og:image" content="assets/app-icon.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0E0B08">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="assets/app-icon.png" alt="">Hoarde</a>
+      <nav aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">A focus timer with something at stake</p>
+        <h1>Guard your <span>hoard.</span> Keep your focus.</h1>
+        <p class="lede">Leave your phone alone and gold piles up in your vault. Open another app and a goblin steals everything at stake.</p>
+        <a class="cta" href="#launch">Coming soon to iPhone &amp; Android</a>
+        <span class="cta-note">No account. No ads. Your hoard stays on your phone.</span>
+
+        <div class="pile" aria-hidden="true" id="pile"></div>
+      </div>
+    </section>
+
+    <section id="how" class="alt">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="section-lede">Every session puts a pile of coins (and sometimes a treasure) on the line.</p>
+        <div class="steps">
+          <article class="step">
+            <h3>Set the watch</h3>
+            <p>Pick 10, 25, 45, 60 or 90 minutes. Longer watches pay more per minute and roll for more treasure.</p>
+          </article>
+          <article class="step">
+            <h3>Lock it and leave it</h3>
+            <p>Lock your phone and get to work. Locking is fine. Opening other apps is not.</p>
+          </article>
+          <article class="step">
+            <h3>Bank the loot</h3>
+            <p>When time's up, coins pour into your vault with a satisfying clink, and any treasure is revealed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <h2>Mind the goblin.</h2>
+          <p class="section-lede">Leave Hoarde for more than a few seconds mid-session and the goblin sneaks in and runs off with your stake. Your vault itself is always safe. You only lose what you were guarding.</p>
+          <p class="section-lede">A small, honest consequence turns out to be very good at keeping your thumb off Instagram.</p>
+        </div>
+        <img src="assets/goblin.png" alt="A green goblin thief carrying a sack of stolen coins" width="320" height="320">
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>Built to feel good</h2>
+        <p class="section-lede">Simple rules, crisp sounds, and a hoard that visibly grows the more you focus.</p>
+        <ul class="features">
+          <li><img src="assets/coin-0.png" alt=""><div><strong>A vault that fills up</strong><span>Every finished session adds to a pile of gold you can watch grow.</span></div></li>
+          <li><img src="assets/mystery-chest.png" alt=""><div><strong>Mystery treasure</strong><span>Sessions can carry a hidden treasure. You only find out what it is if you finish.</span></div></li>
+          <li><img src="assets/dragon-crown.png" alt=""><div><strong>Rare finds</strong><span>Rings, rubies, golden chalices, and a legendary crown for the truly patient.</span></div></li>
+          <li><img src="assets/ruby.png" alt=""><div><strong>Private by design</strong><span>No sign-up, no tracking. Everything lives on your device.</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="launch" class="closing">
+      <div class="wrap">
+        <h2>Coming soon</h2>
+        <p>Hoarde is in development for iPhone and Android. Free to start, with an optional one-time upgrade. No subscription.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Hoarde</span>
+      <nav aria-label="Footer">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Drop a small pile of coins into the hero.
+    (function () {
+      var pile = document.getElementById('pile');
+      if (!pile) return;
+      var rows = [7, 6, 5, 4, 3, 2, 1];
+      var width = pile.clientWidth || 420;
+      var size = 56;
+      var i = 0;
+      rows.forEach(function (count, row) {
+        var rowWidth = (count - 1) * size * 0.72;
+        for (var c = 0; c < count; c++) {
+          var img = document.createElement('img');
+          img.src = 'assets/coin-' + (i % 4) + '.png';
+          img.alt = '';
+          img.className = 'coin-drop';
+          var x = width / 2 - rowWidth / 2 + c * size * 0.72 - size / 2 + ((i * 37) % 9) - 4;
+          img.style.left = x + 'px';
+          img.style.bottom = row * size * 0.42 + 'px';
+          img.style.setProperty('--r', (((i * 53) % 50) - 25) + 'deg');
+          img.style.animationDelay = (0.25 + i * 0.05) + 's';
+          pile.appendChild(img);
+          i++;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

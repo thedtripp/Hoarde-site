@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · Hoarde</title>
+  <meta name="theme-color" content="#0E0B08">
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0e0b08; color: #f3e9d2; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; text-align: center; padding: 24px; }
+    img { width: 180px; margin: 0 auto 16px; display: block; }
+    h1 { font-size: 34px; margin: 0 0 8px; }
+    p { color: #a8987a; margin: 0 0 24px; }
+    a { color: #0e0b08; background: #f5c542; padding: 12px 22px; border-radius: 999px; font-weight: 800; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <img id="goblin" alt="A goblin running off with a sack of coins">
+    <h1>A goblin stole this page.</h1>
+    <p>The page you were looking for isn't here.</p>
+    <a id="home" href="/">Back to the vault</a>
+  </main>
+  <script>
+    // Works both on a custom domain and on a github.io project path (/Hoarde-site/).
+    var base = location.hostname.endsWith('github.io') ? '/' + location.pathname.split('/')[1] + '/' : '/';
+    document.getElementById('home').href = base;
+    document.getElementById('goblin').src = base + 'assets/goblin.png';
+  </script>
+</body>
+</html>
