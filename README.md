@@ -20,7 +20,7 @@ The site will be live at `https://thedtripp.github.io/Hoarde-site/`. To use a cu
 ## Before launch
 
 - The contact address `support@hoarde.app` is a placeholder. Set up the mailbox, or replace it in `privacy.html` and `support.html`.
-- Images in `assets/` are placeholders copied from the app repo. Swap them when the final AI art is ready.
+- Images in `assets/` are copies of the final Stage 1 art from the app repo. When that art changes, copy the matching files over.
 - Keep `privacy.html` in sync with the app. Adding crash reporting, analytics or purchases (RevenueCat) requires updating it.
 
 ## Preview locally
